@@ -87,21 +87,21 @@ function Notifications() {
     <Grid item xs={12} lg={12} key={index}>
       <Card>
         <CardContent>
-        <h3>AVIONS </h3>
+        <h3>AVION </h3>
           <MDAlert color="blue" dismissible>
-          <div className="">
+          <div>
     <img
       src="https://www.travelandleisure.com/thmb/WeC5b5s0KfcMSbGVdSDWtwdcs6k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-jetblue-american-airlines-planes-PLANEMODEL0323-414a2a831f7d44ee9d12a1d47eba3242.jpg"
       alt="Airplane"
-      style={{ width: '50%', height: 'auto' }}
+      style={{ width: '500px', height: '400px' }}
     />
   </div>
-            <div>
-              <td>Marque :{group.marque.value}</td> <br />
-              <td>Matricule : {group.matricule.value}</td><br />
-              <td>Model : {group.model.value}</td><br />
-              <td>nom de pilote : {group.nom.value}</td><br />
-              <td>prenom de pilote :{group.prenom.value}</td><br />
+  <div style={{ marginLeft: '20px' }}>
+              <td> <small>Marque : {group.marque.value}</small></td> <br />
+              <td><small>Matricule : {group.matricule.value}</small></td><br />
+              <td><small>Model : {group.model.value}</small></td><br />
+              <td><small>nom de pilote : {group.nom.value}</small></td><br />
+              <td><small>prenom de pilote : {group.prenom.value}</small></td><br />
             </div>
           </MDAlert>
         </CardContent>
@@ -110,11 +110,13 @@ function Notifications() {
   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
   <h3> Similar Objects </h3>
     {group.sameAttributes.map((attr, idx) => (
-      <Card key={idx} style={{ margin: '0 100px' }}>
-        <CardContent>
-          <p>Same Marque: {attr.sameMarque.value}</p>
-          <p>Same Model: {attr.sameModel.value}</p>
-        </CardContent>
+      <Card key={idx} style={{ margin: '0 50px' }}>
+<CardContent style={{ width: '250px' }}>
+  <small style={{ fontSize: '12px' }}>Same Marque: {attr.sameMarque.value}</small>
+  <br />
+  <small style={{ fontSize: '12px' }}>Same Model: {attr.sameModel.value}</small>
+</CardContent>
+
       </Card>
     ))}
   </div>

@@ -97,7 +97,7 @@ const routes = [
     type: "collapse",
     name: "Avions",
     key: "Avion",
-    icon: <Icon fontSize="small">notifications</Icon>,
+    icon: <Icon fontSize="small">Avion</Icon>,
     route: "/notifications",
     component: <Notifications />,
   },
