@@ -1,39 +1,49 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-
-// Material Dashboard 2 React components
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-
-// Material Dashboard 2 React example components
+import React, { useState, useEffect } from "react";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import { Grid, Card } from "@mui/material";
+import MDBox from "components/MDBox";
+import MDTypography from "components/MDTypography";
 import DataTable from "examples/Tables/DataTable";
-
-// Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+import axios from "axios";
 
 function Tables() {
-  const { columns, rows } = authorsTableData();
-  const { columns: pColumns, rows: pRows } = projectsTableData();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8085/bateau");
+        setData(response.data.results.bindings);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const columns = [
+    { Header: "Nom Bateau", accessor: "nomBateau.value" },
+    { Header: "Ports", accessor: "ports.value" },
+    {
+      Header: "Capitaine",
+      accessor: (row) => {
+        const capitaine = row.capitaine.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+        return capitaine;
+      },
+    },
+    { Header: "Nom", accessor: "nom.value" },
+    {
+      Header: "Mécanicien",
+      accessor: (row) => {
+        const mecanicien = row.mecanicien.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+        return mecanicien;
+      },
+    },
+    { Header: "Nom Mécanicien", accessor: "nomMecanicien.value" },
+  ];
 
   return (
     <DashboardLayout>
@@ -53,16 +63,15 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Authors Table
+                  Bateau
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
+                  table={{
+                    columns: columns,
+                    rows: data,
+                  }}
                 />
               </MDBox>
             </Card>

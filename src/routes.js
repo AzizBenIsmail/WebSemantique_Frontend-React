@@ -44,9 +44,11 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-
+import VoitureSeecuritetable from "./layouts/VoitureSeecuritetable";
+import Camion from  "./layouts/Camion";
 // @mui icons
 import Icon from "@mui/material/Icon";
+import VoituresSEtVelos from "layouts/billing";
 
 const routes = [
   {
@@ -65,13 +67,31 @@ const routes = [
     route: "/tables",
     component: <Tables />,
   },
+
   {
     type: "collapse",
-    name: "Billing",
+    name: "VoitureSeecuritetable",
+    key: "",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/VoitureSeecuritetable",
+    component: <VoitureSeecuritetable />,
+  },
+
+  {
+    type: "collapse",
+    name: "Camion",
+    key: "",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/camion",
+    component: <Camion />,
+  },
+  {
+    type: "collapse",
+    name: "VoitureS&Velos",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
+    route: "/VoitureS&Velos",
+    component: <VoituresSEtVelos />,
   },
   {
     type: "collapse",

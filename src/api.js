@@ -9,3 +9,7 @@ export async function getBateaux() {
 export async function getVoituresEtVelos() {
   return await axios.get(`http://localhost:8085/voiture_velo`);
 }
+
+export async function getCamions() {
+  return await axios.get(`http://localhost:8085/camion`);
+}
