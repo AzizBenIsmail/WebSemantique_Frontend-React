@@ -26,13 +26,34 @@ function Tables() {
 
   // Define the columns for your table
   const columns = [
-    { Header: "Voiture", accessor: "voiture.value" },
+    {
+      Header: "Voiture",
+      accessor: (row) => {
+        const value = row.voiture.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+        return value;
+      },
+    },
+
+    {
+      Header: "Regulation Route",
+      accessor: (row) => {
+        const value = row.regulationR.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+        return value;
+      },
+    },
+    {
+      Header: "Regulation Passagers",
+      accessor: (row) => {
+        const value = row.regulationP.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+        return value;
+      },
+    },
+
+
+
     { Header: "Model", accessor: "model.value" },
     { Header: "Marque", accessor: "marque.value" },
-    { Header: "Regulation Route", accessor: "regulationR.value" },
-    { Header: "Regulation Passagers", accessor: "regulationP.value" },
     { Header: "Vitesse Moyenne Route", accessor: "vitesseMoyenneRoute.value" },
-    { Header: "Ceintures de Sécurité", accessor: "ceintures_de_Sécurité.value" },
   ];
 
   return (
@@ -61,6 +82,7 @@ function Tables() {
                       table={{
                         columns: columns,
                         rows: data,
+
                       }}
                   />
                 </MDBox>
