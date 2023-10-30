@@ -8,134 +8,125 @@
 
 Coded by www.creative-tim.com
 
- =========================================================
+=========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAlert from "components/MDAlert";
-import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-
+import _ from "lodash";
 function Notifications() {
-  const [successSB, setSuccessSB] = useState(false);
-  const [infoSB, setInfoSB] = useState(false);
-  const [warningSB, setWarningSB] = useState(false);
-  const [errorSB, setErrorSB] = useState(false);
+  const [GroupedAvions, setGroupedAvions] = useState(null);
 
-  const openSuccessSB = () => setSuccessSB(true);
-  const closeSuccessSB = () => setSuccessSB(false);
-  const openInfoSB = () => setInfoSB(true);
-  const closeInfoSB = () => setInfoSB(false);
-  const openWarningSB = () => setWarningSB(true);
-  const closeWarningSB = () => setWarningSB(false);
-  const openErrorSB = () => setErrorSB(true);
-  const closeErrorSB = () => setErrorSB(false);
+  async function fetchData() {
+    axios
+      .get("http://localhost:8085/avion", {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      })
+      .then((res) => {
+        const avions = res.data.results.bindings;
+        
+        // Group data by the combination of "model," "marque," "matricule," "nom," and "prenom"
+        const groupedAvions = avions.reduce((groups, item) => {
+          const key = `${item.model.value}_${item.marque.value}_${item.matricule.value}_${item.nom.value}_${item.prenom.value}`;
+          if (!groups[key]) {
+            groups[key] = {
+              model: item.model,
+              marque: item.marque,
+              matricule: item.matricule,
+              nom: item.nom,
+              prenom: item.prenom,
+              sameAttributes: [],
+            };
+          }
+          
+          if (groups[key].sameAttributes.length < 3) { // Limit to 3 sameAttributes
+            groups[key].sameAttributes.push({
+              sameMarque: item.sameMarque,
+              sameModel: item.sameModel,
+            });
+          }
+          
+          return groups;
+        }, {});
 
-  const alertContent = (name) => (
-    <MDTypography variant="body2" color="white">
-      A simple {name} alert with{" "}
-      <MDTypography component="a" href="#" variant="body2" fontWeight="medium" color="white">
-        an example link
-      </MDTypography>
-      . Give it a click if you like.
-    </MDTypography>
-  );
+        // Convert the object back to an array
+        const groupedAvionsArray = Object.values(groupedAvions);
 
-  const renderSuccessSB = (
-    <MDSnackbar
-      color="success"
-      icon="check"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={successSB}
-      onClose={closeSuccessSB}
-      close={closeSuccessSB}
-      bgWhite
-    />
-  );
+        setGroupedAvions(groupedAvionsArray);
+      });
+  }
 
-  const renderInfoSB = (
-    <MDSnackbar
-      icon="notifications"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={infoSB}
-      onClose={closeInfoSB}
-      close={closeInfoSB}
-    />
-  );
-
-  const renderWarningSB = (
-    <MDSnackbar
-      color="warning"
-      icon="star"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={warningSB}
-      onClose={closeWarningSB}
-      close={closeWarningSB}
-      bgWhite
-    />
-  );
-
-  const renderErrorSB = (
-    <MDSnackbar
-      color="error"
-      icon="warning"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={errorSB}
-      onClose={closeErrorSB}
-      close={closeErrorSB}
-      bgWhite
-    />
-  );
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox mt={6} mb={3}>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} lg={8}>
-            <Card>
-              <MDBox p={2}>
-                <MDTypography variant="h5">AVIONS</MDTypography>
-              </MDBox>
-              <MDBox pt={2} px={2}>
-                <MDAlert color="secondary" dismissible>
-                  {alertContent("secondary")}
-                </MDAlert>
-                <MDAlert color="warning" dismissible>
-                  {alertContent("warning")}
-                </MDAlert>
-                <MDAlert color="info" dismissible>
-                  {alertContent("info")}
-                </MDAlert>
-              </MDBox>
-            </Card>
-          </Grid>
+      <Grid container spacing={3} justifyContent="center">
+  {GroupedAvions?.map((group, index) => (
+    <Grid item xs={12} lg={12} key={index}>
+      <Card>
+        <CardContent>
+        <h3>AVIONS </h3>
+          <MDAlert color="blue" dismissible>
+          <div className="">
+    <img
+      src="https://www.travelandleisure.com/thmb/WeC5b5s0KfcMSbGVdSDWtwdcs6k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-jetblue-american-airlines-planes-PLANEMODEL0323-414a2a831f7d44ee9d12a1d47eba3242.jpg"
+      alt="Airplane"
+      style={{ width: '50%', height: 'auto' }}
+    />
+  </div>
+            <div>
+              <td>Marque :{group.marque.value}</td> <br />
+              <td>Matricule : {group.matricule.value}</td><br />
+              <td>Model : {group.model.value}</td><br />
+              <td>nom de pilote : {group.nom.value}</td><br />
+              <td>prenom de pilote :{group.prenom.value}</td><br />
+            </div>
+          </MDAlert>
+        </CardContent>
+        <CardContent>
+        <MDAlert color="dark" dismissible>
+  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <h3> Similar Objects </h3>
+    {group.sameAttributes.map((attr, idx) => (
+      <Card key={idx} style={{ margin: '0 100px' }}>
+        <CardContent>
+          <p>Same Marque: {attr.sameMarque.value}</p>
+          <p>Same Model: {attr.sameModel.value}</p>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+</MDAlert>
 
-          <Grid item xs={12} lg={8}></Grid>
-        </Grid>
+
+        </CardContent>
+      </Card>
+    </Grid>
+  ))}
+</Grid>
+
       </MDBox>
       <Footer />
     </DashboardLayout>
