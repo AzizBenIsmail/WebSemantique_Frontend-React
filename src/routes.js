@@ -44,7 +44,7 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-
+import VoitureSeecuritetable from "./layouts/VoitureSeecuritetable";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -64,6 +64,15 @@ const routes = [
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
     component: <Tables />,
+  },
+
+  {
+    type: "collapse",
+    name: "VoitureSeecuritetable",
+    key: "",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/VoitureSeecuritetable",
+    component: <VoitureSeecuritetable />,
   },
   {
     type: "collapse",
