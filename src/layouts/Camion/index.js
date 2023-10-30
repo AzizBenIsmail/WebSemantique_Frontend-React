@@ -26,7 +26,12 @@ function Tables() {
 
   // Define the columns for your table
   const columns = [
-    { Header: "Chauffeur", accessor: "chauffeur.value" },
+    { Header: "Chauffeur", 
+    accessor: (row) => {
+      const chauffeur = row.chauffeur.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
+      return chauffeur;
+      },
+    },
     { Header: "Nom", accessor: "nom.value" },
     { Header: "Age", accessor: "age.value" },
     { Header: "Email", accessor: "email.value" },
