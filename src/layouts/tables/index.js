@@ -25,6 +25,18 @@ function Tables() {
   }, []);
 
   const columns = [
+    {
+      Header: 'Image',
+      accessor: 'imageURL', // Assurez-vous d'avoir l'URL de l'image dans votre data
+      Cell: ({  }) => (
+        <img
+          src={"https://www.quicksilver-boats.com/media/webpuryb/sundeck_range_930x560.png"} // URL de l'image
+          alt="Bateau" // Texte alternatif de l'image
+          width={150} // Largeur de l'image (ajustez selon vos besoins)
+          height={120} // Hauteur de l'image (ajustez selon vos besoins)
+        />
+      ),
+    },
     { Header: "Nom Bateau", accessor: "nomBateau.value" },
     { Header: "Ports", accessor: "ports.value" },
     {
