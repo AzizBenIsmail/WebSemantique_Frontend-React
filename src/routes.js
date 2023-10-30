@@ -48,6 +48,7 @@ import VoitureSeecuritetable from "./layouts/VoitureSeecuritetable";
 import Camion from  "./layouts/Camion";
 // @mui icons
 import Icon from "@mui/material/Icon";
+import VoituresSEtVelos from "layouts/billing";
 
 const routes = [
   {
@@ -86,11 +87,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Billing",
+    name: "VoitureS&Velos",
     key: "billing",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/billing",
-    component: <Billing />,
+    route: "/VoitureS&Velos",
+    component: <VoituresSEtVelos />,
   },
   {
     type: "collapse",
