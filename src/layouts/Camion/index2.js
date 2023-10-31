@@ -14,7 +14,7 @@ function Tables() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8085/camion");
+        const response = await axios.get("http://localhost:8085/camionvelo");
         setData(response.data.results.bindings);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,7 +31,7 @@ function Tables() {
       accessor: 'imageURL', // Assurez-vous d'avoir l'URL de l'image dans votre data
       Cell: ({  }) => (
         <img
-          src={"/ford.webp"} // URL de l'image
+          src={"/velo.webp"} // URL de l'image
           alt="Camion" // Texte alternatif de l'image
           width={150} // Largeur de l'image (ajustez selon vos besoins)
           height={120} // Hauteur de l'image (ajustez selon vos besoins)
