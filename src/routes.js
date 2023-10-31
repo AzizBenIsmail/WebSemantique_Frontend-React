@@ -49,6 +49,7 @@ import Camion from  "./layouts/Camion";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import VoituresSEtVelos from "layouts/billing";
+import PassagerSeecuritetable from "./layouts/PassagerSeecuritetable";
 
 const routes = [
   {
@@ -70,11 +71,19 @@ const routes = [
 
   {
     type: "collapse",
-    name: "VoitureSeecuritetable",
+    name: "Securite Voitures",
     key: "",
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/VoitureSeecuritetable",
     component: <VoitureSeecuritetable />,
+  },
+  {
+    type: "collapse",
+    name: "Securite Passager",
+    key: "",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/PassagerSeecuritetable",
+    component: <PassagerSeecuritetable />,
   },
 
   {
@@ -93,6 +102,7 @@ const routes = [
     route: "/VoitureS&Velos",
     component: <VoituresSEtVelos />,
   },
+
   {
     type: "collapse",
     name: "Avions",
