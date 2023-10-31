@@ -97,7 +97,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Camion",
+    name: "Velo",
     key: "",
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/camionvelo",
