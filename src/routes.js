@@ -98,7 +98,7 @@ const routes = [
     name: "Avions",
     key: "Avion",
     icon: <Icon fontSize="small">Avion</Icon>,
-    route: "/notifications",
+    route: "/avion",
     component: <Notifications />,
   },
 ];
