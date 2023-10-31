@@ -26,6 +26,18 @@ function Tables() {
 
   // Define the columns for your table
   const columns = [
+    {
+      Header: 'Image',
+      accessor: 'imageURL', // Assurez-vous d'avoir l'URL de l'image dans votre data
+      Cell: ({  }) => (
+        <img
+          src={"/ford.webp"} // URL de l'image
+          alt="Camion" // Texte alternatif de l'image
+          width={150} // Largeur de l'image (ajustez selon vos besoins)
+          height={120} // Hauteur de l'image (ajustez selon vos besoins)
+        />
+      ),
+    },
     { Header: "Chauffeur", 
     accessor: (row) => {
       const chauffeur = row.chauffeur.value.replace("http://www.semanticweb.org/ontologies/5twin6/scaredtocompile/transport#", "");
