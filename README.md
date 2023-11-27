@@ -1,6 +1,4 @@
-# [Material Dashboard 2 React](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/material-dashboard-react&text=Check%20Material%20Dashboard%202%20react%20made%20by%20@CreativeTim%20#webdesign%20#dashboard%20#materialdesign%20#react%20https://www.creative-tim.com/product/material-dashboard-react)
-
-# Plateforme Sémantique Intégrée
+# [Plateforme Sémantique Intégrée](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr) 
 
 Ce projet novateur fusionne habilement les puissantes capacités de la sémantique des données avec des technologies de pointe pour offrir une expérience utilisateur enrichie. En utilisant React pour le frontend et Spring Boot pour le backend, cette plateforme permet une interaction transparente avec des données sémantiques modélisées dans une ontologie construite à l'aide de Protégé.
 
