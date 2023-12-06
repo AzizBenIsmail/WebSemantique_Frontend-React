@@ -1,5 +1,7 @@
 # [Plateforme Sémantique Intégrée](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr) 
 
+![GitHub repo size](https://img.shields.io/github/repo-size/AzizBenIsmail/WebSemantique_Frontend-React)
+
 Ce projet novateur fusionne habilement les puissantes capacités de la sémantique des données avec des technologies de pointe pour offrir une expérience utilisateur enrichie. En utilisant React pour le frontend et Spring Boot pour le backend, cette plateforme permet une interaction transparente avec des données sémantiques modélisées dans une ontologie construite à l'aide de Protégé.
 
 L'ontologie élaborée avec Protégé représente de manière précise les concepts, les relations et les entités du domaine choisi par l'équipe, offrant ainsi une structure organisée pour les données sémantiques. Les données existantes ont été intégrées dans cette ontologie, transformées en instances OWL conformes à sa structure.
